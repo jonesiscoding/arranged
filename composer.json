@@ -1,0 +1,24 @@
+{
+    "name": "deviscoding/arranged",
+    "description": "PHP Library with objects for managing date formats as well as formatting and reducing date periods.",
+    "keywords": ["php","date","time","format","reduce","abbreviate","truncate","DateTime","DatePeriod"],
+    "type": "library",
+    "license": "LGPL-2.1",
+    "authors": [
+        {
+            "name": "AMJones",
+            "email": "am@jonesiscoding.com"
+        }
+    ],
+    "version": "1.0",
+    "autoload": {
+        "psr-4": {
+            "DevCoding\\Arranged\\Object\\": "src/Object",
+            "DevCoding\\Arranged\\Helper\\": "src/Helper",
+            "DevCoding\\Arranged\\Exception\\": "src/Exception"
+        }
+    },
+    "require": {
+        "php": ">=7.0"
+    }
+}
