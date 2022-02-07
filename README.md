@@ -20,6 +20,24 @@ in the format string, the separator and the 00 is removed. For more examples, se
 For convenience, the `DevCoding\Arranger\Object\DatePeriod` class extends the native PHP `DatePeriod` class with`format` 
 and `reduce` methods that utilize the methods from `DevCoding\Arranger\Helper\DatePeriodFormatter`.
 
+### Installation & Usage
+
+Installation is simple via composer `composer require deviscoding/arranged`.
+
+Usage is simple:
+
+    $StartDate  = new \DateTime('2021-01-06 14:20:00')
+    $EndDate    = new \DateTime('2021-01-06 23:32:00');
+    $Interval   = new \DateInterval('PT15M');
+    $DatePeriod = new \DevCoding\DevCoding\Object\Date\DatePeriod($StartDate, $Interval, $EndDate);
+    $formatted  = $DatePeriod->format('l, F dS g:ia');
+    $reduced    = $DatePeriod->reduce('l, F dS g:ia', 40);
+    $further    = $DatePeriod->reduce('l, F dS g:ia');
+    echo $formatted.' OR '.$reduced.' OR '.$further;
+
+The above should print *Wednesday, January 6th 2:20pm-11:30pm OR Wednesday, January 6th 2:20-11:30pm OR Wed, Jan 6th, 
+2:20-11:30pm*.
+
 ### Dependencies
 There are no dependencies for this library other than PHP 7+.
 
