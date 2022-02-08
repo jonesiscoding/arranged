@@ -8,7 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DevCoding\Object\Date;
+namespace DevCoding\Arranged\Object;
+
+use DevCoding\Arranged\Helper\DatePeriodFormatter;
 
 /**
  * Object representing a DatePeriod, extending the native PHP DatePeriod object by adding formatting and reduction

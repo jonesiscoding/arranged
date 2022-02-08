@@ -8,7 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DevCoding\Object\Date;
+namespace DevCoding\Arranged\Object;
+
+use DevCoding\Arranged\Exception\DateFormatException;
 
 /**
  * Object representing a string that consists of PHP date format characters.

@@ -8,7 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace DevCoding\Object\Date;
+namespace DevCoding\Arranged\Helper;
+
+use DevCoding\Arranged\Object\DateFormat;
 
 /**
  * Provides methods to format the given DatePeriod, and reduce the length of the formatted string by removing redundant

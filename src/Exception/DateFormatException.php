@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace DevCoding\Object\Date;
+namespace DevCoding\Arranged\Exception;
 
 /**
  * Exception used in the instance that a format string does not contain the proper tokens to be used to format
