@@ -49,7 +49,11 @@ class DatePeriodFormatter
   {
     $DateFormat = new DateFormat($format);
 
-    if (!$this->isSameDay())
+    if ($this->isSameDateTime())
+    {
+      return $this->period->getStartDate()->format($format);
+    }
+    elseif (!$this->isSameDay())
     {
       // We don't have the same date for start/end, check if we have the same month
       if ($this->isSameMonth() && !$DateFormat->isYearPresent() && !$DateFormat->isDateSeparated())
@@ -81,6 +85,14 @@ class DatePeriodFormatter
   public function isSameDay(): bool
   {
     return $this->isSameDatePart('Ymd');
+  }
+
+  /**
+   * @return bool
+   */
+  public function isSameDateTime()
+  {
+    return $this->isSameDatePart('YmdHis');
   }
 
   /**
@@ -140,6 +152,11 @@ class DatePeriodFormatter
    */
   public function reduce(string $format, $sep = '-', $max = null): string
   {
+    if ($this->isSameDateTime())
+    {
+      return $this->format($format, $sep);
+    }
+
     $output = $this->reduceTime($format, $sep);
     if ($this->isMaxExceeded($output, $max))
     {
