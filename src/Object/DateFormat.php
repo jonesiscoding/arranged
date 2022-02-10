@@ -124,7 +124,7 @@ class DateFormat
 
       if (preg_match('#'.self::PATTERN_TIME.'#', $part, $matches))
       {
-        $this->format_time = trim($matches[1], "\n\s\r-_./\\");
+        $this->format_time = $this->getObject($matches[1]);
       }
       else
       {
@@ -230,9 +230,7 @@ class DateFormat
   {
     if (is_null($this->time_separated))
     {
-      $datePart = $this->getTimePart();
-
-      $this->time_separated = preg_match('#([\\\/:._-]+)#', $datePart);
+      $this->time_separated = preg_match('#([\\\/:._-]+)#', $this->getTimePart()->toString());
     }
 
     return $this->time_separated;

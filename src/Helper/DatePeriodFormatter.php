@@ -64,7 +64,7 @@ class DatePeriodFormatter
     elseif ($DateFormat->isDatePresent())
     {
       // If we have the same date for start & end, but the format includes the date, omit it for the end.
-      $EndFormat = new DateFormat($DateFormat->getTimePart());
+      $EndFormat = $DateFormat->getTimePart();
     }
 
     $EndFormat = $EndFormat ?? $DateFormat;
@@ -228,9 +228,7 @@ class DatePeriodFormatter
         {
           $EndFormat  = $EndFormat ?? $TimeFormat;
           $TimeFormat = $TimeFormat->replace('#[aA]#', '');
-
-          $dfString  = $EndFormat->getTimePart();
-          $EndFormat = new DateFormat(trim($dfString, "\n\s\r-_./\\"));
+          $EndFormat  = $EndFormat->getTimePart();
         }
       }
 
