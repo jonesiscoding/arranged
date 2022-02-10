@@ -18,6 +18,7 @@ use DevCoding\Arranged\Object\DateFormat;
  *
  * @author  AMJones <am@jonesiscoding.com>
  * @license https://github.com/jonesiscoding/arranged/blob/main/LICENSE
+ *
  * @package DevCoding\Arranged\Helper
  */
 class DatePeriodFormatter
@@ -239,14 +240,16 @@ class DatePeriodFormatter
         }
       }
 
-      if ($TimeFormat->isMeridiemPresent())
+      if ($TimeFormat->isMeridiemPresent() && $this->isSameMeridiem() && $this->isSameDay())
       {
-        if ($this->isSameMeridiem() && $this->isSameDay())
-        {
-          $EndFormat  = $EndFormat ?? $TimeFormat;
-          $TimeFormat = $TimeFormat->replace('#[aA]#', '');
-          $EndFormat  = $EndFormat->getTimePart();
-        }
+        $EndFormat  = $EndFormat ?? $TimeFormat;
+        $TimeFormat = $TimeFormat->replace('#[aA]#', '');
+        $EndFormat  = $EndFormat->getTimePart();
+      }
+      elseif ($this->isSameDay())
+      {
+        $EndFormat = $EndFormat ?? $TimeFormat;
+        $EndFormat = $EndFormat->getTimePart();
       }
 
       $EndFormat = $EndFormat ?? $TimeFormat;
