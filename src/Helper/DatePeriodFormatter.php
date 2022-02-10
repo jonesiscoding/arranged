@@ -265,7 +265,7 @@ class DatePeriodFormatter
    */
   private function isSameDatePart($format): bool
   {
-    return $this->period->getStartDate()->format($format) === $this->period->getStartDate()->format($format);
+    return $this->period->getStartDate()->format($format) === $this->period->getEndDate()->format($format);
   }
 
   // endregion ///////////////////////////////////////////// Helper Methods
