@@ -244,7 +244,7 @@ class DateFormat
    */
   public function isLeadingZeros()
   {
-    foreach (['D', 'm', 'h'] as $try)
+    foreach (['d', 'm', 'h'] as $try)
     {
       if (false !== strpos($this->string, $try))
       {
