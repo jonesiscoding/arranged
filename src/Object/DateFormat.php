@@ -23,7 +23,7 @@ use DevCoding\Arranged\Exception\DateFormatException;
 class DateFormat
 {
   const PATTERN_TIME     = '([HhGg][isaAuveT\s:.]+)';
-  const PATTERN_DATE     = '([FmMnYydDj\s._\-/\\\]+)';
+  const PATTERN_DATE     = '([FmMnYydDj\s._,•\-/\\\]+)';
   const PATTERN_NOT_HOUR = '([^HhGg]+)';
 
   /** @var bool */
@@ -100,7 +100,9 @@ class DateFormat
 
       if (preg_match('#'.self::PATTERN_DATE.'#', $part, $matches))
       {
-        $this->format_date = new DateFormat(trim($matches[1], "\n\s\r-_./\\"));
+        $trimmed = preg_replace('#([\n\r\s\\\/,•._\-]+)$#','',$matches[1]);
+
+        $this->format_date = new DateFormat($trimmed);
       }
       else
       {
@@ -215,7 +217,7 @@ class DateFormat
 
   /**
    * Evaluates whether the date portion of the date format string represented by this object contains separators such
-   * as backslashes, slashes, colons, periods, underscores, or dashes.
+   * as backslashes, slashes, bullets, commas, periods, underscores, or dashes.
    *
    * @return bool
    */
@@ -224,8 +226,7 @@ class DateFormat
     if (is_null($this->date_separated))
     {
       $datePart = $this->getDatePart();
-
-      $this->date_separated = preg_match('#([\\\/:._-]+)#', $datePart);
+      $this->date_separated = preg_match('#([\\\/,•._\-]+)#', $datePart);
     }
 
     return $this->date_separated;
@@ -241,7 +242,7 @@ class DateFormat
   {
     if (is_null($this->time_separated))
     {
-      $this->time_separated = preg_match('#([\\\/:._-]+)#', $this->getTimePart()->toString());
+      $this->time_separated = preg_match('#([\\\/:._\-]+)#', $this->getTimePart()->toString());
     }
 
     return $this->time_separated;
