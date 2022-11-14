@@ -59,9 +59,9 @@ class DatePeriodFormatter
       // We don't have the same date for start/end, check if we have the same month
       if ($this->isSameMonth() && !$DateFormat->isYearPresent() && !$DateFormat->isDateSeparated())
       {
-        if (!$DateFormat->isTimePresent() || $this->isSameTime())
+        if (!$DateFormat->isDayPresent() && (!$DateFormat->isTimePresent() || $this->isSameTime()))
         {
-          // If we have the same month, no year, no standard separators, and no time, remove the Month from the End Format
+          // If we have same month, no year, no standard separators, no day & no time: remove the Month from End Format.
           $EndFormat = $DateFormat->replace('/([FmMn]+)(.*)/', '$2');
         }
       }
