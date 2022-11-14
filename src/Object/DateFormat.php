@@ -23,7 +23,7 @@ use DevCoding\Arranged\Exception\DateFormatException;
 class DateFormat
 {
   const PATTERN_TIME     = '([HhGg][isaAuveT\s:.]+)';
-  const PATTERN_DATE     = '([FmMnYydDj\s._,•\-/\\\]+)';
+  const PATTERN_DATE     = '([FmMnYydDjl\s._,•\-/\\\]+)';
   const PATTERN_NOT_HOUR = '([^HhGg]+)';
 
   /** @var bool */
@@ -164,7 +164,7 @@ class DateFormat
   {
     if (is_null($this->date_present))
     {
-      $this->date_present = preg_match('#([FmMnYydDj\s._\-/\\\]+)#', $this->string);
+      $this->date_present = preg_match('#([FmMnYydDjl\s._\-/\\\]+)#', $this->string);
     }
 
     return $this->date_present;
