@@ -29,6 +29,8 @@ class DateFormat
   /** @var bool */
   protected $date_present;
   /** @var bool */
+  protected $day_present;
+  /** @var bool */
   protected $date_separated;
   /** @var string */
   protected $string;
@@ -164,6 +166,15 @@ class DateFormat
     }
 
     return $this->date_present;
+  }
+
+  public function isDayPresent(): bool {
+    if (is_null($this->day_present))
+    {
+      $this->day_present = $this->isLongDay() || $this->isShortDay();
+    }
+
+    return $this->day_present;
   }
 
   /**
