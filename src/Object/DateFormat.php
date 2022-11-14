@@ -277,6 +277,11 @@ class DateFormat
     return false !== strpos($this->string, 'l');
   }
 
+  public function isShortDay()
+  {
+    return false !== strpos($this->string, 'D');
+  }
+
   /**
    * Removes any tokens that will result in leading zeros from the date format represented by this object, then returns
    * a new DateFormat object.
