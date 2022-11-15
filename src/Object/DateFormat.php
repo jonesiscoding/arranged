@@ -122,7 +122,7 @@ class DateFormat
    */
   public function getTimePart()
   {
-    if (is_null($this->format_time) && $this->isDatePresent())
+    if (is_null($this->format_time) && $this->isTimePresent())
     {
       $part = preg_replace('#'.self::PATTERN_DATE.'#', '', $this->string);
 
