@@ -147,12 +147,7 @@ class DateFormat
    */
   public function isYearPresent()
   {
-    if ($this->isDatePresent())
-    {
-      return false !== stripos($this->string, 'y');
-    }
-
-    return false;
+    return false !== stripos($this->string, 'y');
   }
 
   /**
