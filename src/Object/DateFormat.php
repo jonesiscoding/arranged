@@ -194,7 +194,7 @@ class DateFormat
   {
     if (is_null($this->time_present))
     {
-      $this->time_present = preg_match('#([^HhGg]+([HhGg][isaAuveT\s:]+))#', $this->string);
+      $this->time_present = preg_match('#([HhGg][isaAuveT\s:]+)#', $this->string);
     }
 
     return $this->time_present;
