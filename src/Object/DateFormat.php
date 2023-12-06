@@ -55,9 +55,9 @@ class DateFormat
     {
       if (!preg_match('#[crU]#', $this->string))
       {
-        if (!preg_match('#'.self::PATTERN_DATE.'#', $this->string))
+        if (!preg_match('#'.static::PATTERN_DATE.'#', $this->string))
         {
-          if (!preg_match('#'.self::PATTERN_TIME.'#', $this->string))
+          if (!preg_match('#'.static::PATTERN_TIME.'#', $this->string))
           {
             throw new DateFormatException($this->string);
           }
@@ -96,9 +96,9 @@ class DateFormat
   {
     if (is_null($this->format_date) && $this->isDatePresent())
     {
-      $part = preg_replace('#'.self::PATTERN_TIME.'#', '', $this->string);
+      $part = preg_replace('#'.static::PATTERN_TIME.'#', '', $this->string);
 
-      if (preg_match('#'.self::PATTERN_DATE.'#', $part, $matches))
+      if (preg_match('#'.static::PATTERN_DATE.'#', $part, $matches))
       {
         $trimmed = preg_replace('#([\n\r\s\\\/,•._\-]+)$#','',$matches[1]);
 
@@ -124,9 +124,9 @@ class DateFormat
   {
     if (is_null($this->format_time) && $this->isTimePresent())
     {
-      $part = preg_replace('#'.self::PATTERN_DATE.'#', '', $this->string);
+      $part = preg_replace('#'.static::PATTERN_DATE.'#', '', $this->string);
 
-      if (preg_match('#'.self::PATTERN_TIME.'#', $part, $matches))
+      if (preg_match('#'.static::PATTERN_TIME.'#', $part, $matches))
       {
         $this->format_time = $this->getObject($matches[1]);
       }
