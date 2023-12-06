@@ -22,7 +22,7 @@ use DevCoding\Arranged\Exception\DateFormatException;
  */
 class DateFormat
 {
-  const PATTERN_TIME     = '([HhGg][isaAuveT\s:.]+)';
+  const PATTERN_TIME     = '([HhGg][isaAuveT\s:.]*)';
   const PATTERN_DATE     = '([FmMnYydDjl\s._,•\-/\\\]+)';
   const PATTERN_NOT_HOUR = '([^HhGg]+)';
 
