@@ -10,7 +10,7 @@
             "email": "am@jonesiscoding.com"
         }
     ],
-    "version": "1.1.1",
+    "version": "1.1.2",
     "autoload": {
         "psr-4": {
             "DevCoding\\Arranged\\Object\\": "src/Object",
