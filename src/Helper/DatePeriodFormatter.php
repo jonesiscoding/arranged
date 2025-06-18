@@ -70,6 +70,11 @@ class DatePeriodFormatter
       {
         $EndFormat  = $EndFormat ?? $DateFormat;
         $DateFormat = $DateFormat->replace('/\s([XxYy]+)/', '');
+
+        if ($this->isSameMonth() && (!$DateFormat->isTimePresent() || $this->isSameTime()))
+        {
+          $EndFormat = $EndFormat->replace('/([FmMn]+)(.*)/', '$2');
+        }
       }
     }
     elseif ($DateFormat->isDatePresent())
