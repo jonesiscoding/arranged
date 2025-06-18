@@ -65,6 +65,12 @@ class DatePeriodFormatter
           $EndFormat = $DateFormat->replace('/([FmMn]+)(.*)/', '$2');
         }
       }
+
+      if ($this->isSameYear() && $DateFormat->isYearPresent() && !$DateFormat->isDateSeparated())
+      {
+        $EndFormat  = $EndFormat ?? $DateFormat;
+        $DateFormat = $DateFormat->replace('/\s([XxYy]+)/', '');
+      }
     }
     elseif ($DateFormat->isDatePresent())
     {
