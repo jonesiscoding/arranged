@@ -50,7 +50,7 @@ class DatePeriodFormatter
   {
     $DateFormat = new DateFormat($format);
 
-    if ($this->isSameDateTime())
+    if ($this->isSameDateTime() || ($this->isSameDay() && empty($DateFormat->getTimePart())))
     {
       return $this->period->getStartDate()->format($format);
     }
