@@ -50,7 +50,7 @@ class DatePeriodFormatter
   {
     $DateFormat = new DateFormat($format);
 
-    if ($this->isSameDateTime())
+    if ($this->isSameDateTime() || ($this->isSameDay() && empty($DateFormat->getTimePart())))
     {
       return $this->period->getStartDate()->format($format);
     }
@@ -63,6 +63,17 @@ class DatePeriodFormatter
         {
           // If we have same month, no year, no standard separators, no day & no time: remove the Month from End Format.
           $EndFormat = $DateFormat->replace('/([FmMn]+)(.*)/', '$2');
+        }
+      }
+
+      if ($this->isSameYear() && $DateFormat->isYearPresent() && !$DateFormat->isDateSeparated())
+      {
+        $EndFormat  = $EndFormat ?? $DateFormat;
+        $DateFormat = $DateFormat->replace('/\s([XxYy]+)/', '');
+
+        if ($this->isSameMonth() && (!$DateFormat->isTimePresent() || $this->isSameTime()))
+        {
+          $EndFormat = $EndFormat->replace('/([FmMn]+)(.*)/', '$2');
         }
       }
     }
